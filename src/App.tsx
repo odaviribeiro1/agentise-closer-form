@@ -452,7 +452,7 @@ function App() {
       <ProgressBar current={currentQuestion + 1} total={questions.length} />
 
       {/* Main layout — content pushed to lower portion like Respondi */}
-      <div className="min-h-screen flex flex-col justify-center items-center py-12 px-6">
+      <div className="min-h-screen flex flex-col justify-start items-center pt-[30vh] pb-12 px-6">
         <div style={{ width: '100%', maxWidth: 600, position: 'relative', paddingRight: 56 }}>
 
           {/* Animated question */}
