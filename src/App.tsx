@@ -4,6 +4,29 @@ import { supabase } from './lib/supabase';
 import type { Answer, ApplicationData, Option, Question } from './types';
 import axios from 'axios';
 
+// ── Welcome Screen ───────────────────────────────────────────────────────────
+
+function WelcomeScreen({ onStart }: { onStart: () => void }) {
+  return (
+    <div className="min-h-screen bg-white flex flex-col justify-end items-center pb-16 px-6">
+      <div style={{ width: '100%', maxWidth: 600 }}>
+        <h1 className="text-3xl font-bold text-[#111] leading-snug mb-3">
+          Vaga - Closer Pleno
+        </h1>
+        <p className="text-gray-500 text-base mb-8">
+          Este questionário leva 4 minutos para ser preenchido.
+        </p>
+        <button
+          onClick={onStart}
+          className="px-10 py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-150"
+        >
+          Iniciar
+        </button>
+      </div>
+    </div>
+  );
+}
+
 // ── Progress Bar ─────────────────────────────────────────────────────────────
 
 function ProgressBar({ current, total }: { current: number; total: number }) {
@@ -310,6 +333,7 @@ function EndScreen({ type }: { type: 'eliminated' | 'success' }) {
 // ── App ───────────────────────────────────────────────────────────────────────
 
 function App() {
+  const [started, setStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Map<number, Answer>>(new Map());
   const [eliminated, setEliminated] = useState(false);
@@ -417,6 +441,7 @@ function App() {
     }
   };
 
+  if (!started) return <WelcomeScreen onStart={() => setStarted(true)} />;
   if (eliminated) return <EndScreen type="eliminated" />;
   if (submitted || submitting) return <EndScreen type="success" />;
 
