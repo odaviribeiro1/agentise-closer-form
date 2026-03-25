@@ -36,6 +36,9 @@ export interface FormState {
 
 export interface ApplicationData {
   id?: string;
+  nome?: string;
+  whatsapp?: string;
+  instagram?: string;
   q1?: string;
   q2?: string;
   q3?: string;

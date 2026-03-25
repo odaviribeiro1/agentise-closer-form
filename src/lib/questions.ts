@@ -1,6 +1,29 @@
 import type { Question } from '../types';
 
 export const questions: Question[] = [
+  // BLOCO 0 — Identificação
+  {
+    id: 15,
+    block: 0,
+    question: 'Qual é o seu nome completo?',
+    type: 'text-short',
+    placeholder: 'Seu nome completo...',
+  },
+  {
+    id: 16,
+    block: 0,
+    question: 'Qual é o seu WhatsApp?',
+    type: 'text-short',
+    placeholder: '(11) 99999-9999',
+  },
+  {
+    id: 17,
+    block: 0,
+    question: 'Qual é o seu Instagram?',
+    type: 'text-short',
+    placeholder: '@seuinstagram',
+  },
+
   // BLOCO 1 — Knockout
   {
     id: 1,

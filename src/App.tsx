@@ -391,25 +391,35 @@ function App() {
       const applicationData: ApplicationData = {
         status: eliminated ? 'eliminated' : 'pending',
         eliminated,
-        eliminated_at_question: undefined,
       };
 
       answers.forEach((answer, questionId) => {
-        const key = `q${questionId}` as keyof ApplicationData;
-        if (questionId === 8) {
+        if (questionId === 15) {
+          applicationData['nome'] = answer.value as string;
+        } else if (questionId === 16) {
+          applicationData['whatsapp'] = answer.value as string;
+        } else if (questionId === 17) {
+          applicationData['instagram'] = answer.value as string;
+        } else if (questionId === 8) {
           applicationData['q8'] = answer.value as string;
-          applicationData['q8_details'] = answer.textValue;
+          if (answer.textValue) applicationData['q8_details'] = answer.textValue;
         } else if (questionId === 10) {
           applicationData['q10'] = answer.value as string;
-          applicationData['q10_justification'] = answer.textValue;
+          if (answer.textValue) applicationData['q10_justification'] = answer.textValue;
         } else {
+          const key = `q${questionId}` as keyof ApplicationData;
           (applicationData[key] as any) = answer.value || answer.textValue;
         }
       });
 
+      // Remove undefined fields before sending to Supabase
+      const cleanData = Object.fromEntries(
+        Object.entries(applicationData).filter(([, v]) => v !== undefined)
+      );
+
       const { error: dbError } = await supabase
         .from('closer_applications')
-        .insert([applicationData]);
+        .insert([cleanData]);
       if (dbError) throw new Error(`Failed to save: ${dbError.message}`);
 
       const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
