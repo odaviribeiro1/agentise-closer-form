@@ -160,7 +160,6 @@ function App() {
               question={question}
               answer={currentAnswer}
               onAnswerChange={handleAnswerChange}
-              isAnswered={isAnswered()}
             />
           </div>
         </div>

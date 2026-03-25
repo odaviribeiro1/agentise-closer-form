@@ -8,14 +8,12 @@ interface QuestionCardProps {
   question: Question;
   answer?: Answer;
   onAnswerChange: (answer: Answer) => void;
-  isAnswered: boolean;
 }
 
 export function QuestionCard({
   question,
   answer,
   onAnswerChange,
-  isAnswered,
 }: QuestionCardProps) {
   const handleChange = (value: string | number) => {
     onAnswerChange({
