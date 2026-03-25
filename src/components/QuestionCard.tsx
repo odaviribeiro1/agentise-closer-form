@@ -1,4 +1,4 @@
-import { Question, Answer } from '../types';
+import type { Question, Answer } from '../types';
 import { MultipleChoice } from './Questions/MultipleChoice';
 import { Scale } from './Questions/Scale';
 import { TextInput } from './Questions/TextInput';
@@ -33,17 +33,17 @@ export function QuestionCard({
   };
 
   return (
-    <div className="space-y-8 animate-fadeIn">
-      <div>
-        <div className="text-secondary text-sm mb-2">
+    <div className="w-full animate-slideIn">
+      <div className="space-y-4 md:space-y-6 mb-8 md:mb-10">
+        <div className="text-text-secondary text-sm md:text-base font-normal">
           Pergunta {question.id} de 14
         </div>
-        <h2 className="text-3xl font-bold text-white leading-tight">
+        <h2 className="text-[22px] md:text-[26px] font-semibold text-text-main leading-tight">
           {question.question}
         </h2>
       </div>
 
-      <div className="py-6">
+      <div className="space-y-4 md:space-y-5">
         {question.type === 'multiple-choice' && question.options && (
           <MultipleChoice
             options={question.options}
@@ -89,12 +89,6 @@ export function QuestionCard({
           />
         )}
       </div>
-
-      {!isAnswered && (
-        <div className="text-secondary text-sm">
-          ⚠️ Por favor, responda a pergunta para continuar
-        </div>
-      )}
     </div>
   );
 }

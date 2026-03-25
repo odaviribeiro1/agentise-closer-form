@@ -7,9 +7,9 @@ export function ProgressBar({ current, total }: ProgressBarProps) {
   const progress = (current / total) * 100;
 
   return (
-    <div className="w-full h-1 bg-surface overflow-hidden">
+    <div className="w-screen h-[3px] md:h-1 bg-transparent overflow-hidden fixed top-0 left-0 z-[100]">
       <div
-        className="h-full bg-gradient-to-r from-primary to-secondary transition-all duration-500 ease-out"
+        className="h-full bg-primary transition-all duration-300 ease-out"
         style={{ width: `${progress}%` }}
       />
     </div>

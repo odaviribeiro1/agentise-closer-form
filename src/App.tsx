@@ -4,7 +4,7 @@ import { QuestionCard } from './components/QuestionCard';
 import { EndScreen } from './components/EndScreen';
 import { questions } from './lib/questions';
 import { supabase } from './lib/supabase';
-import { Answer, ApplicationData } from './types';
+import type { Answer, ApplicationData } from './types';
 import axios from 'axios';
 
 function App() {
@@ -149,34 +149,63 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background flex flex-col pt-[3px] md:pt-1">
       <ProgressBar current={currentQuestion + 1} total={questions.length} />
 
-      <div className="max-w-2xl mx-auto px-6 py-12 md:py-16">
-        <QuestionCard
-          question={question}
-          answer={currentAnswer}
-          onAnswerChange={handleAnswerChange}
-          isAnswered={isAnswered()}
-        />
-
-        <div className="mt-12 flex gap-4 justify-between">
-          <button
-            onClick={handlePrevious}
-            disabled={currentQuestion === 0}
-            className="px-6 py-3 rounded-lg font-semibold transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed text-secondary border-2 border-border hover:border-secondary hover:text-white"
-          >
-            ← Voltar
-          </button>
-
-          <button
-            onClick={handleNext}
-            disabled={!isAnswered()}
-            className="px-8 py-3 bg-primary hover:bg-secondary text-white font-semibold rounded-lg transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {currentQuestion === questions.length - 1 ? 'Enviar' : 'Avançar →'}
-          </button>
+      {/* Main content */}
+      <div className="flex-1 flex flex-col pt-6 md:pt-8 pb-24 md:pb-12">
+        <div className="container-responsive flex flex-col justify-start" style={{ minHeight: 'calc(100vh - 200px)', justifyContent: 'flex-start', paddingTop: '20vh' }}>
+          <div className="animate-slideIn">
+            <QuestionCard
+              question={question}
+              answer={currentAnswer}
+              onAnswerChange={handleAnswerChange}
+              isAnswered={isAnswered()}
+            />
+          </div>
         </div>
+      </div>
+
+      {/* Bottom button (mobile) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 bg-background border-t border-border-light p-4 container-responsive flex gap-3">
+        <button
+          onClick={handleNext}
+          disabled={!isAnswered()}
+          className="flex-1 h-12 bg-primary hover:bg-blue-600 text-white font-semibold rounded-md transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed text-base"
+        >
+          {currentQuestion === questions.length - 1 ? 'Enviar' : 'Avançar'}
+        </button>
+      </div>
+
+      {/* Desktop button (left side) */}
+      <div className="hidden md:flex fixed bottom-12 left-12 gap-3 items-center">
+        <button
+          onClick={handleNext}
+          disabled={!isAnswered()}
+          className="px-6 h-12 bg-primary hover:bg-blue-600 text-white font-semibold rounded-md transition-all duration-200 disabled:opacity-40 disabled:cursor-not-allowed text-base min-w-[140px]"
+        >
+          {currentQuestion === questions.length - 1 ? 'Enviar' : 'Avançar'}
+        </button>
+      </div>
+
+      {/* Navigation arrows (fixed right) */}
+      <div className="fixed right-6 md:right-10 top-1/2 transform -translate-y-1/2 flex flex-col gap-2 md:gap-4">
+        <button
+          onClick={handlePrevious}
+          disabled={currentQuestion === 0}
+          className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center text-primary hover:bg-bg-hover rounded-md transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed text-xl md:text-2xl"
+          title="Pergunta anterior"
+        >
+          ↑
+        </button>
+        <button
+          onClick={handleNext}
+          disabled={!isAnswered()}
+          className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center text-primary hover:bg-bg-hover rounded-md transition-all duration-200 disabled:opacity-30 disabled:cursor-not-allowed text-xl md:text-2xl"
+          title="Próxima pergunta"
+        >
+          ↓
+        </button>
       </div>
     </div>
   );

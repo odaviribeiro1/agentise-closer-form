@@ -1,4 +1,4 @@
-import { Option } from '../../types';
+import type { Option } from '../../types';
 
 interface ScaleProps {
   options: Option[];
@@ -8,15 +8,15 @@ interface ScaleProps {
 
 export function Scale({ options, selected, onChange }: ScaleProps) {
   return (
-    <div className="flex gap-3 justify-center flex-wrap">
+    <div className="flex gap-2 md:gap-3 justify-start max-w-full md:max-w-[400px]">
       {options.map((option) => (
         <button
           key={option.id}
           onClick={() => onChange(option.value)}
-          className={`w-16 h-16 rounded-lg border-2 font-bold text-lg transition-all duration-200 ${
+          className={`flex-1 h-12 md:h-14 rounded-lg border-2 font-semibold text-base transition-all duration-200 min-h-[48px] md:min-h-[56px] ${
             selected === option.value
-              ? 'border-primary bg-primary text-white scale-105'
-              : 'border-border bg-surface hover:border-secondary'
+              ? 'border-primary bg-primary text-white'
+              : 'border-border-light bg-white text-text-main hover:bg-bg-hover'
           }`}
         >
           {option.label}

@@ -4,7 +4,7 @@ export interface Option {
   id: string;
   label: string;
   value: string;
-  isEliminating?: boolean; // true if selecting this option eliminates the candidate
+  isEliminating?: boolean;
 }
 
 export interface Question {
@@ -13,7 +13,7 @@ export interface Question {
   type: QuestionType;
   options?: Option[];
   placeholder?: string;
-  block: number; // 1, 2, 3, or 4
+  block: number;
   conditional?: {
     questionId: number;
     value: string;
@@ -24,14 +24,14 @@ export interface Question {
 export interface Answer {
   questionId: number;
   value: string | number | null;
-  textValue?: string; // for multiple-with-text
+  textValue?: string;
 }
 
 export interface FormState {
   answers: Map<number, Answer>;
   currentQuestion: number;
   eliminated: boolean;
-  eliminatedAt?: number; // question ID where eliminated
+  eliminatedAt?: number;
 }
 
 export interface ApplicationData {

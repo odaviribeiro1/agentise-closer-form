@@ -13,6 +13,8 @@ export function TextInput({
   multiline = false,
   maxLength,
 }: TextInputProps) {
+  const baseClasses = "w-full bg-transparent border-0 border-b-2 border-border-light text-text-main placeholder-placeholder focus:outline-none focus:border-primary transition-all duration-200 text-base py-2 md:py-3 px-0";
+
   if (multiline) {
     return (
       <textarea
@@ -20,8 +22,7 @@ export function TextInput({
         onChange={(e) => onChange(e.target.value)}
         placeholder={placeholder}
         maxLength={maxLength}
-        rows={6}
-        className="w-full p-4 bg-surface border-2 border-border rounded-lg text-white placeholder-secondary focus:outline-none focus:border-primary transition-colors duration-200 resize-none"
+        className={baseClasses + " resize-none min-h-20 md:min-h-24"}
       />
     );
   }
@@ -33,7 +34,7 @@ export function TextInput({
       onChange={(e) => onChange(e.target.value)}
       placeholder={placeholder}
       maxLength={maxLength}
-      className="w-full p-4 bg-surface border-2 border-border rounded-lg text-white placeholder-secondary focus:outline-none focus:border-primary transition-colors duration-200"
+      className={baseClasses}
     />
   );
 }
