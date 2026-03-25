@@ -74,7 +74,7 @@ function MultipleChoice({
             >
               {letters[index]}
             </div>
-            <span className="text-base text-[#2563EB]">{option.label}</span>
+            <span className="text-sm text-[#2563EB]">{option.label}</span>
           </button>
         );
       })}
@@ -101,7 +101,7 @@ function ScaleChoice({
           <button
             key={option.id}
             onClick={() => onChange(option.value)}
-            className={`flex-1 h-12 rounded-lg border font-semibold text-base transition-all duration-150 cursor-pointer ${
+            className={`flex-1 h-12 rounded-lg border font-semibold text-sm transition-all duration-150 cursor-pointer ${
               isSelected
                 ? 'bg-blue-600 border-blue-600 text-white'
                 : 'bg-white border-blue-200 text-[#2563EB] hover:bg-blue-50'
@@ -129,7 +129,7 @@ function TextInput({
   multiline?: boolean;
 }) {
   const baseClass =
-    'w-full bg-transparent border-0 border-b-2 border-blue-300 text-gray-900 focus:outline-none focus:border-blue-500 transition-colors duration-200 text-lg py-2 px-0';
+    'w-full bg-transparent border-0 border-b-2 border-blue-300 text-gray-900 focus:outline-none focus:border-blue-500 transition-colors duration-200 text-base py-2 px-0';
 
   return (
     <div>
@@ -202,7 +202,7 @@ function MultipleWithText({
             >
               {letters[index]}
             </div>
-            <span className="text-base text-[#2563EB]">{option.label}</span>
+            <span className="text-sm text-[#2563EB]">{option.label}</span>
           </button>
         );
       })}
@@ -452,7 +452,7 @@ function App() {
       <ProgressBar current={currentQuestion + 1} total={questions.length} />
 
       {/* Main layout — content pushed to lower portion like Respondi */}
-      <div className="min-h-screen flex flex-col justify-end items-center pb-16 px-6">
+      <div className="min-h-screen flex flex-col justify-center items-center py-12 px-6">
         <div style={{ width: '100%', maxWidth: 600, position: 'relative', paddingRight: 56 }}>
 
           {/* Animated question */}
