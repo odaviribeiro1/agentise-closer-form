@@ -300,21 +300,15 @@ function QuestionCard({
 
 function EndScreen({ type }: { type: 'eliminated' | 'success' }) {
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-end pb-24 px-6">
-      <div className="w-full max-w-[600px]">
+    <div className="min-h-screen bg-white flex flex-col justify-center items-center px-6">
+      <div style={{ width: '100%', maxWidth: 600 }}>
         {type === 'eliminated' ? (
           <>
             <h2 className="text-2xl font-bold text-[#111] mb-4">Obrigado!</h2>
-            <p className="text-gray-500 text-base leading-relaxed mb-8">
+            <p className="text-gray-500 text-base leading-relaxed">
               No momento, seu perfil não se encaixa nos requisitos desta vaga.
               Fique de olho nas nossas oportunidades futuras!
             </p>
-            <button
-              onClick={() => window.location.reload()}
-              className="px-6 py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-150"
-            >
-              Tentar Novamente
-            </button>
           </>
         ) : (
           <>
