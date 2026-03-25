@@ -8,7 +8,7 @@ import axios from 'axios';
 
 function WelcomeScreen({ onStart }: { onStart: () => void }) {
   return (
-    <div className="min-h-screen bg-white flex flex-col justify-end items-center pb-16 px-6">
+    <div className="min-h-screen bg-white flex flex-col justify-center items-center px-6">
       <div style={{ width: '100%', maxWidth: 600 }}>
         <h1 className="text-3xl font-bold text-[#111] leading-snug mb-3">
           Vaga - Closer Pleno
