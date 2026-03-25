@@ -430,8 +430,8 @@ function App() {
             timestamp: new Date().toISOString(),
             answers: Object.fromEntries(answers),
           });
-        } catch {
-          // continue even if webhook fails
+        } catch (webhookErr) {
+          console.error('Webhook error:', webhookErr);
         }
       }
 
