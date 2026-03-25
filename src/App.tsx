@@ -422,17 +422,13 @@ function App() {
         .insert([cleanData]);
       if (dbError) throw new Error(`Failed to save: ${dbError.message}`);
 
-      const webhookUrl = import.meta.env.VITE_N8N_WEBHOOK_URL;
-      if (webhookUrl) {
-        try {
-          await axios.post(webhookUrl, {
-            ...applicationData,
-            timestamp: new Date().toISOString(),
-            answers: Object.fromEntries(answers),
-          });
-        } catch (webhookErr) {
-          console.error('Webhook error:', webhookErr);
-        }
+      try {
+        await axios.post('/api/webhook', {
+          ...cleanData,
+          timestamp: new Date().toISOString(),
+        });
+      } catch (webhookErr) {
+        console.error('Webhook error:', webhookErr);
       }
 
       localStorage.removeItem('formAnswers');
