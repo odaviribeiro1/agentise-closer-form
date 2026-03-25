@@ -428,7 +428,7 @@ function App() {
 
       {/* Main layout — content pushed to lower portion like Respondi */}
       <div className="min-h-screen flex flex-col justify-end items-center pb-16 px-6">
-        <div className="w-full max-w-[600px] relative pr-14">
+        <div style={{ width: '100%', maxWidth: 600, position: 'relative', paddingRight: 56 }}>
 
           {/* Animated question */}
           <div
