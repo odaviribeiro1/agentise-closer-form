@@ -5,7 +5,7 @@ export const questions: Question[] = [
   {
     id: 1,
     block: 1,
-    question: 'Esta posição é remunerada com comissão de 5% a 10% sobre caixa coletado em vendas, sem salário fixo. Após 60 dias de performance, um valor fixo pode ser negociado. Está alinhado com isso?',
+    question: 'Esta posição é remunerada com comissão de 5% a 10% sobre o valor total de contratos fechados, sem salário fixo. Está alinhado com isso?',
     type: 'multiple-choice',
     options: [
       { id: '1a', label: 'Sim, topo', value: 'sim_topo' },
