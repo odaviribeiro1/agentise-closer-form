@@ -38,7 +38,7 @@ function MultipleChoice({
           <button
             key={option.id}
             onClick={() => onChange(option.value)}
-            className={`w-full flex items-center gap-4 p-4 rounded-lg border transition-all duration-150 text-left cursor-pointer ${
+            className={`w-full flex items-center gap-4 px-4 py-5 rounded-lg border transition-all duration-150 text-left cursor-pointer ${
               isSelected
                 ? 'bg-blue-50 border-blue-400'
                 : 'bg-white border-blue-200 hover:bg-blue-50'
@@ -166,7 +166,7 @@ function MultipleWithText({
           <button
             key={option.id}
             onClick={() => onChange(option.value)}
-            className={`w-full flex items-center gap-4 p-4 rounded-lg border transition-all duration-150 text-left cursor-pointer ${
+            className={`w-full flex items-center gap-4 px-4 py-5 rounded-lg border transition-all duration-150 text-left cursor-pointer ${
               isSelected
                 ? 'bg-blue-50 border-blue-400'
                 : 'bg-white border-blue-200 hover:bg-blue-50'
@@ -427,7 +427,7 @@ function App() {
       <ProgressBar current={currentQuestion + 1} total={questions.length} />
 
       {/* Main layout — content pushed to lower portion like Respondi */}
-      <div className="min-h-screen flex flex-col justify-end pb-16 px-6">
+      <div className="min-h-screen flex flex-col justify-end items-center pb-16 px-6">
         <div className="w-full max-w-[600px] relative pr-14">
 
           {/* Animated question */}
@@ -457,7 +457,7 @@ function App() {
               <button
                 onClick={() => navigate('next')}
                 disabled={!answered}
-                className="px-6 py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed"
+                className="px-10 py-3 bg-[#2563EB] hover:bg-blue-700 text-white font-semibold rounded-lg transition-colors duration-150 disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 {currentQuestion === questions.length - 1 ? 'Enviar' : 'Avançar'}
               </button>
