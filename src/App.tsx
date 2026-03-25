@@ -10,7 +10,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
   return (
     <div className="min-h-screen bg-white flex flex-col justify-center items-center px-6">
       <div style={{ width: '100%', maxWidth: 600 }}>
-        <h1 className="text-3xl font-bold text-[#111] leading-snug mb-3">
+        <h1 className="text-2xl font-bold text-[#111] leading-snug mb-3">
           Vaga - Closer Pleno
         </h1>
         <p className="text-gray-500 text-base mb-8">
@@ -32,7 +32,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
 function ProgressBar({ current, total }: { current: number; total: number }) {
   const progress = (current / total) * 100;
   return (
-    <div className="fixed top-0 left-0 w-full z-50" style={{ height: '3px' }}>
+    <div className="fixed top-0 left-0 w-full z-50" style={{ height: '5px' }}>
       <div
         className="h-full transition-all duration-500 ease-out"
         style={{ width: `${progress}%`, background: '#2563EB' }}
@@ -243,7 +243,7 @@ function QuestionCard({
   return (
     <div className="w-full">
       {/* Title */}
-      <h2 className="text-3xl font-bold text-[#111] leading-snug mb-6">
+      <h2 className="text-2xl font-bold text-[#111] leading-snug mb-6">
         {question.question}
       </h2>
 
@@ -304,7 +304,7 @@ function EndScreen({ type }: { type: 'eliminated' | 'success' }) {
       <div className="w-full max-w-[600px]">
         {type === 'eliminated' ? (
           <>
-            <h2 className="text-3xl font-bold text-[#111] mb-4">Obrigado!</h2>
+            <h2 className="text-2xl font-bold text-[#111] mb-4">Obrigado!</h2>
             <p className="text-gray-500 text-base leading-relaxed mb-8">
               No momento, seu perfil não se encaixa nos requisitos desta vaga.
               Fique de olho nas nossas oportunidades futuras!
@@ -318,7 +318,7 @@ function EndScreen({ type }: { type: 'eliminated' | 'success' }) {
           </>
         ) : (
           <>
-            <h2 className="text-3xl font-bold text-[#111] mb-4">Enviado com sucesso!</h2>
+            <h2 className="text-2xl font-bold text-[#111] mb-4">Enviado com sucesso!</h2>
             <p className="text-gray-500 text-base leading-relaxed">
               Suas respostas foram recebidas. Nossa equipe analisará seu perfil
               e entrará em contato em breve.
