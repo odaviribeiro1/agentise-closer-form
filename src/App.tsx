@@ -11,7 +11,7 @@ function WelcomeScreen({ onStart }: { onStart: () => void }) {
     <div className="min-h-screen bg-white flex flex-col justify-center items-center px-6">
       <div style={{ width: '100%', maxWidth: 600 }}>
         <h1 className="text-2xl font-bold text-[#111] leading-snug mb-3">
-          Vaga - Closer Pleno
+          Vaga para Closer
         </h1>
         <p className="text-gray-500 text-base mb-8">
           Este questionário leva 4 minutos para ser preenchido.
